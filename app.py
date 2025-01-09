@@ -76,4 +76,6 @@ def download_file(filename):
     return send_file(os.path.join(PROCESSED_FOLDER, filename), as_attachment=True)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    # Render 需要綁定到 0.0.0.0 並從 PORT 環境變數獲取端口號
+    port = int(os.environ.get("PORT", 5000))  # 預設為 5000，適用於本地測試
+    app.run(host="0.0.0.0", port=port, debug=True)
